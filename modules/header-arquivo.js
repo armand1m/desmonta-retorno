@@ -1,3 +1,5 @@
+var Table = require('cli-table');
+
 function HeaderArquivo(linha) {
 	this.codComp = linha.substring(0, 3);
 	this.loteServico = linha.substring(3, 7);
@@ -18,31 +20,35 @@ function HeaderArquivo(linha) {
 	this.numSequencial = linha.substring(157, 163);
 	this.numVersaoLayout = linha.substring(163, 166);
 	this.densidadeArquivo = linha.substring(166, 171);
-	this.print();
+	this.printTable();
 };
 
-HeaderArquivo.prototype.print = function() {
-	console.log("{------- HEADER DE ARQUIVO -------}"); 
-	console.log("|| Codigo de Compensação: " + this.codComp);
-	console.log("|| Lote de Serviço: " + this.loteServico);
-	console.log("|| Tipo de Registro: " + this.tipoRegistro);
-	console.log("|| Tipo CPF/CNPJ: " + this.tipoCpfCnpj);
-	console.log("|| Numero CPF/CNPJ: " + this.numCpfCnpj);
-	console.log("|| Numero Convenio: " + this.numConvenio);
-	console.log("|| Numero Agencia: " + this.numAgencia);
-	console.log("|| Digito Agencia: " + this.digAgencia);
-	console.log("|| Numero Conta Corrente: " + this.numContaCorrente);
-	console.log("|| Digito Conta Corrente: " + this.digContaCorrente);
-	console.log("|| Digito Agencia/Conta: " + this.digAgenciaConta);
-	console.log("|| Nome da Empresa: " + this.nomeEmpresa);
-	console.log("|| Nome do Banco: " + this.nomeBanco);
-	console.log("|| Codigo de Remessa/Retorno: " + this.codRemessaRetorno);
-	console.log("|| Data de Geração: " + this.dataGeracao);
-	console.log("|| Hora da Geração: " + this.horaGeracao);
-	console.log("|| Numero Sequencial: " + this.numSequencial);
-	console.log("|| Numero Versao do Layout: " + this.numVersaoLayout);
-	console.log("|| Densidade de Arquivo: " + this.densidadeArquivo);
-	console.log("{------- FIM HEADER DE ARQUIVO -------}\n");
+HeaderArquivo.prototype.printTable = function() {
+	var table = new Table({ head: ['Header de Arquivo'] });
+
+	table.push(	
+		["Codigo de Compensação: ", this.codComp],
+		["Lote de Serviço: ", this.loteServico],
+		["Tipo de Registro: ", this.tipoRegistro],
+		["Tipo CPF/CNPJ: ", this.tipoCpfCnpj],
+		["Numero CPF/CNPJ: ", this.numCpfCnpj],
+		["Numero Convenio: ", this.numConvenio],
+		["Numero Agencia: ", this.numAgencia],
+		["Digito Agencia: ", this.digAgencia],
+		["Numero Conta Corrente: ", this.numContaCorrente],
+		["Digito Conta Corrente: ", this.digContaCorrente],
+		["Digito Agencia/Conta: ", this.digAgenciaConta],
+		["Nome da Empresa: ", this.nomeEmpresa],
+		["Nome do Banco: ", this.nomeBanco],
+		["Codigo de Remessa/Retorno: ", this.codRemessaRetorno],
+		["Data de Geração: ", this.dataGeracao],
+		["Hora da Geração: ", this.horaGeracao],
+		["Numero Sequencial: ", this.numSequencial],
+		["Numero Versao do Layout: ", this.numVersaoLayout],
+		["Densidade de Arquivo: ", this.densidadeArquivo]
+	);
+
+	console.log(table.toString());
 };
 
 module.exports = HeaderArquivo;

@@ -1,3 +1,5 @@
+var Table = require('cli-table');
+
 function TraillerArquivo(linha) {
 	this.codComp = linha.substring(0, 3);
 	this.loteServico = linha.substring(3, 7);
@@ -9,14 +11,18 @@ function TraillerArquivo(linha) {
 };
 
 TraillerArquivo.prototype.print = function() {
-	console.log("{------- TRAILLER ARQUIVO -------}");
-	console.log("|| Codigo de Compensação: " + this.codComp);
-	console.log("|| Lote de Serviço: " + this.loteServico);
-	console.log("|| Tipo de Registro: " + this.tipoRegistro);
-	console.log("|| Quantidade de Lotes: " + this.qtdLotes);
-	console.log("|| Quantidade de Registros: " + this.qtdRegistros);
-	console.log("|| Quantidade de Contas: " + this.qtdContas);
-	console.log("{------- FIM TRAILLER ARQUIVO -------}");
+	var table = new Table({ head: ['Trailler de Arquivo'] });
+
+	table.push(	
+		["Codigo de Compensação: ", this.codComp],
+		["Lote de Serviço: ", this.loteServico],
+		["Tipo de Registro: ", this.tipoRegistro],
+		["Quantidade de Lotes: ", this.qtdLotes],
+		["Quantidade de Registros: ", this.qtdRegistros],
+		["Quantidade de Contas: ", this.qtdContas]
+	);
+
+	console.log(table.toString());
 };
 
 module.exports = TraillerArquivo;

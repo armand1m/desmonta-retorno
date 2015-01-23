@@ -1,3 +1,5 @@
+var Table = require('cli-table');
+
 function SegmentoT(linha) {
 	this.codComp = linha.substring(0, 3);
 	this.loteServico = linha.substring(3, 7);
@@ -30,35 +32,39 @@ function SegmentoT(linha) {
 };
 
 SegmentoT.prototype.print = function() {
-	console.log("{------- SEGMENTO T -------}"); 
-	console.log("|| Código de Compensação: " + this.codComp);
-	console.log("|| Lote de Serviço: " + this.loteServico);
-	console.log("|| Tipo de Registro: " + this.tipoRegistro);
-	console.log("|| Numero do Registro: " + this.numRegistro);
-	console.log("|| Codigo do Segmento: " + this.codSegmento);
-	console.log("|| Codigo de Movimento: " + this.codMovimento);
-	console.log("|| Numero da Agencia: " + this.numAgencia);
-	console.log("|| Digito da Agencia: " + this.digAgencia);
-	console.log("|| Numero da Conta Corrente: " + this.numContaCorrente);
-	console.log("|| Digito da Conta Corrente: " + this.digContaCorrente);
-	console.log("|| Digito da Agencia/Conta: " + this.digAgenciaConta);
-	console.log("|| Nosso Numero: " + this.nossoNumero);
-	console.log("|| Codigo da Carteira: " + this.codCarteira);
-	console.log("|| Numero do Documento: " + this.numDocumento);
-	console.log("|| Data de Vencimento: " + this.dataVencimento);
-	console.log("|| Valor do Titulo: " + this.vlTitulo);
-	console.log("|| Numero do Banco Cobrador: " + this.numBancoCobrador);
-	console.log("|| Numero da Agencia Cobradora: " + this.numAgenciaCobradora);
-	console.log("|| Digito da Agencia Cobradora: " + this.digAgenciaCobradora);
-	console.log("|| Uso Empresa: " + this.usoEmpresa);
-	console.log("|| Codigo de Moeda: " + this.codMoeda);
-	console.log("|| Tipo de Inscricao do Sacado: " + this.tipoInscricaoSacado);
-	console.log("|| Numero de Inscricao do Sacado: " + this.numInscricaoSacado);
-	console.log("|| Nome do Sacado: " + this.nomeSacado);
-	console.log("|| Numero do Contrato: " + this.numContrato);
-	console.log("|| Valor da Tarifa: " + this.vlTarifa);
-	console.log("|| Motivo de Ocorrencia: " + this.motivoOcorrencia);
-	console.log("{------- FIM SEGMENTO T -------}\n")
+	var table = new Table({ head: ['Segmento T'] });
+
+	table.push(	
+		["Código de Compensação: ", this.codComp],
+		["Lote de Serviço: ", this.loteServico],
+		["Tipo de Registro: ", this.tipoRegistro],
+		["Numero do Registro: ", this.numRegistro],
+		["Codigo do Segmento: ", this.codSegmento],
+		["Codigo de Movimento: ", this.codMovimento],
+		["Numero da Agencia: ", this.numAgencia],
+		["Digito da Agencia: ", this.digAgencia],
+		["Numero da Conta Corrente: ", this.numContaCorrente],
+		["Digito da Conta Corrente: ", this.digContaCorrente],
+		["Digito da Agencia/Conta: ", this.digAgenciaConta],
+		["Nosso Numero: ", this.nossoNumero],
+		["Codigo da Carteira: ", this.codCarteira],
+		["Numero do Documento: ", this.numDocumento],
+		["Data de Vencimento: ", this.dataVencimento],
+		["Valor do Titulo: ", this.vlTitulo],
+		["Numero do Banco Cobrador: ", this.numBancoCobrador],
+		["Numero da Agencia Cobradora: ", this.numAgenciaCobradora],
+		["Digito da Agencia Cobradora: ", this.digAgenciaCobradora],
+		["Uso Empresa: ", this.usoEmpresa],
+		["Codigo de Moeda: ", this.codMoeda],
+		["Tipo de Inscricao do Sacado: ", this.tipoInscricaoSacado],
+		["Numero de Inscricao do Sacado: ", this.numInscricaoSacado],
+		["Nome do Sacado: ", this.nomeSacado],
+		["Numero do Contrato: ", this.numContrato],
+		["Valor da Tarifa: ", this.vlTarifa],
+		["Motivo de Ocorrencia: ", this.motivoOcorrencia]
+	);
+
+	console.log(table.toString());
 };
 
 module.exports = SegmentoT;

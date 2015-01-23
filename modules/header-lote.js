@@ -1,3 +1,5 @@
+var Table = require('cli-table');
+
 function HeaderLote(linha) {
 	this.codComp = linha.substring(0, 3);
 	this.loteServico = linha.substring(3, 7);
@@ -19,32 +21,35 @@ function HeaderLote(linha) {
 	this.numRemessaRetorno = linha.substring(183, 191);
 	this.dataGravacao = linha.substring(191, 199);
 	this.dataCredito = linha.substring(199, 207);
-	this.print();
+	this.printTable();
 };
 
-HeaderLote.prototype.print = function() {
-	console.log("{------- HEADER DE LOTE -------}"); 
-	console.log("|| Código de Compensação: " + this.codComp);
-	console.log("|| Lote de Serviço: " + this.loteServico);
-	console.log("|| Tipo de Registro: " + this.tipoRegistro);
-	console.log("|| Tipo de Operação: " + this.tipoOperacao);
-	console.log("|| Tipo de Serviço: " + this.tipoServico);
-	console.log("|| Numero de Versao Layout: " + this.numVersaoLayout);
-	console.log("|| Tipo CPF/CNPJ: " + this.tipoCpfCnpj);
-	console.log("|| Numero CPF/CNPJ: " + this.numCpfCnpj);
-	console.log("|| Numero Convenio: " + this.numConvenio);
-	console.log("|| Numero Agencia: " + this.numAgencia);
-	console.log("|| Digito Agencia: " + this.digAgencia);
-	console.log("|| Numero Conta Corrente: " + this.numContaCorrente);
-	console.log("|| Digito Conta Corrente: " + this.digContaCorrente);
-	console.log("|| Digito Agencia/Conta: " + this.digAgenciaConta);
-	console.log("|| Nome da Empresa: " + this.nomeEmpresa);
-	console.log("|| Mensagem 1: " + this.mensagem1);
-	console.log("|| Mensagem 2: " + this.mensagem2);
-	console.log("|| Numero de Remessa/Retorno: " + this.numRemessaRetorno);
-	console.log("|| Data de Gravação: " + this.dataGravacao);
-	console.log("|| Data de Crédito: " + this.dataCredito);
-	console.log("{------- FIM HEADER DE LOTE -------}\n")
+HeaderLote.prototype.printTable = function() {
+	var table = new Table({ head: ['Header de Lote'] });
+
+	table.push(	
+		["Lote de Serviço: ", this.loteServico],
+		["Tipo de Registro: ", this.tipoRegistro],
+		["Tipo de Operação: ", this.tipoOperacao],
+		["Tipo de Serviço: ", this.tipoServico],
+		["Numero de Versao Layout: ", this.numVersaoLayout],
+		["Tipo CPF/CNPJ: ", this.tipoCpfCnpj],
+		["Numero CPF/CNPJ: ", this.numCpfCnpj],
+		["Numero Convenio: ", this.numConvenio],
+		["Numero Agencia: ", this.numAgencia],
+		["Digito Agencia: ", this.digAgencia],
+		["Numero Conta Corrente: ", this.numContaCorrente],
+		["Digito Conta Corrente: ", this.digContaCorrente],
+		["Digito Agencia/Conta: ", this.digAgenciaConta],
+		["Nome da Empresa: ", this.nomeEmpresa],
+		["Mensagem 1: ", this.mensagem1],
+		["Mensagem 2: ", this.mensagem2],
+		["Numero de Remessa/Retorno: ", this.numRemessaRetorno],
+		["Data de Gravação: ", this.dataGravacao],
+		["Data de Crédito: ", this.dataCredito]
+	);
+
+	console.log(table.toString());
 };
 
 module.exports = HeaderLote;
