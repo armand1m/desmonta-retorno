@@ -1,6 +1,28 @@
 var Table = require('cli-table');
 
-function HeaderArquivo(linha) {
+function HeaderArquivo() {
+	this.codComp = null;
+	this.loteServico = null;
+	this.tipoRegistro = null;
+	this.tipoCpfCnpj = null;
+	this.numCpfCnpj = null;
+	this.numConvenio = null;
+	this.numAgencia = null;
+	this.digAgencia = null;
+	this.numContaCorrente = null;
+	this.digContaCorrente = null;
+	this.digAgenciaConta = null;
+	this.nomeEmpresa = null;
+	this.nomeBanco = null;
+	this.codRemessaRetorno = null;
+	this.dataGeracao = null;
+	this.horaGeracao = null;
+	this.numSequencial = null;
+	this.numVersaoLayout = null;
+	this.densidadeArquivo = null;
+};
+
+HeaderArquivo.prototype.parseLinha = function(linha) {
 	this.codComp = linha.substring(0, 3);
 	this.loteServico = linha.substring(3, 7);
 	this.tipoRegistro = linha.substring(7, 8);
@@ -20,10 +42,9 @@ function HeaderArquivo(linha) {
 	this.numSequencial = linha.substring(157, 163);
 	this.numVersaoLayout = linha.substring(163, 166);
 	this.densidadeArquivo = linha.substring(166, 171);
-	this.printTable();
 };
 
-HeaderArquivo.prototype.printTable = function() {
+HeaderArquivo.prototype.print = function() {
 	var table = new Table({ head: ['Header de Arquivo'] });
 
 	table.push(	

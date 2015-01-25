@@ -1,6 +1,22 @@
 var Table = require('cli-table');
 
-function TraillerLote(linha) {
+function TraillerLote() {
+	this.codComp = null;
+	this.loteServico = null;
+	this.tipoRegistro = null;
+	this.qtdRegistros = null;
+	this.qtdTitulosCobrancaSimples = null;
+	this.vlTitulosCobrancaSimples = null;
+	this.qtdTitulosCobrancaVinculada = null;
+	this.vlTitulosCobrancaVinculada = null;
+	this.qtdTitulosCobrancaCaucionada = null;
+	this.vlTitulosCobrancaCaucionada = null;
+	this.qtdTitulosCobrancaDescontada = null;
+	this.vlTitulosCobrancaDescontada = null;
+	this.numAviso = null;
+};
+
+TraillerLote.prototype.parseLinha = function(linha) {
 	this.codComp = linha.substring(0, 3);
 	this.loteServico = linha.substring(3, 7);
 	this.tipoRegistro = linha.substring(7, 8);
@@ -14,10 +30,9 @@ function TraillerLote(linha) {
 	this.qtdTitulosCobrancaDescontada = linha.substring(92, 98);
 	this.vlTitulosCobrancaDescontada = linha.substring(98, 115);
 	this.numAviso = linha.substring(115, 123);
-	this.printTable();
 };
 
-TraillerLote.prototype.printTable = function() {
+TraillerLote.prototype.print = function() {
 	var table = new Table({ head: ['Trailler de Lote'] });
 
 	table.push(

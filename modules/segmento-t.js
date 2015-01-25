@@ -1,6 +1,36 @@
 var Table = require('cli-table');
 
-function SegmentoT(linha) {
+function SegmentoT() {
+	this.codComp = null;
+	this.loteServico = null;
+	this.tipoRegistro = null;
+	this.numRegistro = null;
+	this.codSegmento = null;
+	this.codMovimento = null;
+	this.numAgencia = null;
+	this.digAgencia = null;
+	this.numContaCorrente = null;
+	this.digContaCorrente = null;
+	this.digAgenciaConta = null;
+	this.nossoNumero = null;
+	this.codCarteira = null;
+	this.numDocumento = null;
+	this.dataVencimento = null;
+	this.vlTitulo = null;
+	this.numBancoCobrador = null;
+	this.numAgenciaCobradora = null;
+	this.digAgenciaCobradora = null;
+	this.usoEmpresa = null;
+	this.codMoeda = null;
+	this.tipoInscricaoSacado = null;
+	this.numInscricaoSacado = null;
+	this.nomeSacado = null;
+	this.numContrato = null;
+	this.vlTarifa = null;
+	this.motivoOcorrencia = null;
+};
+
+SegmentoT.prototype.parseLinha = function(linha) {
 	this.codComp = linha.substring(0, 3);
 	this.loteServico = linha.substring(3, 7);
 	this.tipoRegistro = linha.substring(7, 8);
@@ -28,7 +58,6 @@ function SegmentoT(linha) {
 	this.numContrato = linha.substring(188, 198);
 	this.vlTarifa = linha.substring(198, 213);
 	this.motivoOcorrencia = linha.substring(213, 223);
-	this.print();
 };
 
 SegmentoT.prototype.print = function() {

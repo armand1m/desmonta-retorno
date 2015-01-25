@@ -1,6 +1,29 @@
 var Table = require('cli-table');
 
-function HeaderLote(linha) {
+function HeaderLote() {
+	this.codComp = null;
+	this.loteServico = null;
+	this.tipoRegistro = null;
+	this.tipoOperacao = null;
+	this.tipoServico = null;
+	this.numVersaoLayout = null;
+	this.tipoCpfCnpj = null;
+	this.numCpfCnpj = null;
+	this.numConvenio = null;
+	this.numAgencia = null;
+	this.digAgencia = null;
+	this.numContaCorrente = null;
+	this.digContaCorrente = null;
+	this.digAgenciaConta = null;
+	this.nomeEmpresa = null;
+	this.mensagem1 = null;
+	this.mensagem2 = null;
+	this.numRemessaRetorno = null;
+	this.dataGravacao = null;
+	this.dataCredito = null;
+};
+
+HeaderLote.prototype.parseLinha = function(linha) {
 	this.codComp = linha.substring(0, 3);
 	this.loteServico = linha.substring(3, 7);
 	this.tipoRegistro = linha.substring(7, 8);
@@ -21,10 +44,9 @@ function HeaderLote(linha) {
 	this.numRemessaRetorno = linha.substring(183, 191);
 	this.dataGravacao = linha.substring(191, 199);
 	this.dataCredito = linha.substring(199, 207);
-	this.printTable();
 };
 
-HeaderLote.prototype.printTable = function() {
+HeaderLote.prototype.print = function() {
 	var table = new Table({ head: ['Header de Lote'] });
 
 	table.push(	
