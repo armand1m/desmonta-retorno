@@ -12,6 +12,11 @@ Vá para o diretório:
 cd /caminho/onde/voce/clonou/o/repositorio/desmonta-retorno
 ```
 
+Instale as dependencias do projeto:
+```
+npm install
+```
+
 Execute o comando:
 ```
 node desmonta-retorno.js /caminho/para/o/arquivo_de_retorno.REM
