@@ -1,0 +1,23 @@
+{
+  "name": "desmonta-retorno",
+  "version": "1.0.0",
+  "description": "desmonta arquivos de retorno do banco do brasil",
+  "main": "desmonta-retorno.js",
+  "dependencies": {
+    "cli-table": "^0.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/armand1m/desmonta-retorno.git"
+  },
+  "author": "armando magalhaes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/armand1m/desmonta-retorno/issues"
+  },
+  "homepage": "https://github.com/armand1m/desmonta-retorno"
+}
