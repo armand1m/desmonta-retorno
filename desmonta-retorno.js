@@ -1,14 +1,14 @@
-var HeaderArquivo 	= require('./modules/header-arquivo')
-,	HeaderLote 		= require('./modules/header-lote')
-,	RegistroDetalhe = require('./modules/registro-detalhe')
-,	TraillerLote 	= require('./modules/trailler-lote')
-,	TraillerArquivo = require('./modules/trailler-arquivo');
+var HeaderArquivo   = require('./modules/header-arquivo')
+,   HeaderLote      = require('./modules/header-lote')
+,   RegistroDetalhe = require('./modules/registro-detalhe')
+,   TraillerLote    = require('./modules/trailler-lote')
+,   TraillerArquivo = require('./modules/trailler-arquivo');
 
-const HEADER_ARQUIVO 	= 0
-,	  HEADER_LOTE 		= 1
-,	  REGISTRO_DETALHE 	= 3
-,	  TRAILLER_LOTE 	= 5
-,	  TRAILLER_ARQUIVO 	= 9;
+const HEADER_ARQUIVO    = 0
+,     HEADER_LOTE       = 1
+,     REGISTRO_DETALHE  = 3
+,     TRAILLER_LOTE     = 5
+,     TRAILLER_ARQUIVO  = 9;
 
 var app = {
 	hasParams: process.argv.length > 3,
@@ -30,20 +30,20 @@ app.execute = function() {
 app.validarParametros = function() {
 	if(!this.hasMinParams) {
 		console.log('Usage: node ' + process.argv[1] + ' FILENAME');
-		process.exit(1);		
+		process.exit(1);
 	}
 };
 
 app.processaLinha = function(linha, index, array) {
 	var tipoRegistro = linha.substring(7,8)
-	, 	registro;
+	,   registro;
 
 	switch(parseInt(tipoRegistro)) {
-		case HEADER_ARQUIVO: 	registro = new HeaderArquivo();  break;
-		case HEADER_LOTE: 		registro = new HeaderLote(); break;
-		case REGISTRO_DETALHE: 	registro = new RegistroDetalhe(); break;
-		case TRAILLER_LOTE: 	registro = new TraillerLote(); break;
-		case TRAILLER_ARQUIVO: 	registro = new TraillerArquivo(); break;
+		case HEADER_ARQUIVO:    registro = new HeaderArquivo();  break;
+		case HEADER_LOTE:       registro = new HeaderLote(); break;
+		case REGISTRO_DETALHE:  registro = new RegistroDetalhe(); break;
+		case TRAILLER_LOTE:     registro = new TraillerLote(); break;
+		case TRAILLER_ARQUIVO:  registro = new TraillerArquivo(); break;
 	}
 
 	if(registro != null) {
@@ -59,7 +59,7 @@ app.processarParams = function() {
 		throw new Error("A função 'processaParams' precisa de paramêtros para funcionar.");
 
 	var params = process.argv.splice(3, 2)
-	,	linhas = this.linhas;
+	,   linhas = this.linhas;
 
 	params.forEach(function (param) {
 		linhas.forEach(function (linha) {
@@ -88,7 +88,7 @@ app.processarParams = function() {
 	});
 };
 
-var domain 	= require('domain').create();
+var domain  = require('domain').create();
 
 domain.on('error', function(error) {
 	console.error('Alguma coisa deu errado..' + "\n" + error.message);

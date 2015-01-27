@@ -19,5 +19,27 @@ npm install
 
 Execute o comando:
 ```
-node desmonta-retorno.js /caminho/para/o/arquivo_de_retorno.REM
+node desmonta-retorno.js /caminho/para/o/IEDCBR1111_RETORNO.ret
+```
+
+Existem algumas opções para filtrar pedaços do arquivo de retorno.
+* --ha, --header-arquivo
+* --hl, --header-lote
+* --rd, --registro-detalhe
+* --tl, --trailler-lote
+* --ta, --trailler-arquivo
+
+Exemplo:
+```
+node desmonta-retorno.js /caminho/para/o/IEDCBR1111_RETORNO.ret --ha
+
+/**
+ *	Retorna somente o header de arquivo do arquivo de retorno.
+ **/
+
+node desmonta-retorno.js /caminho/para/o/IEDCBR1111_RETORNO.ret --ha --hl
+
+/**
+ *	Retorna o header de arquivo e o header de lote do arquivo de retorno.
+ **/
 ```
