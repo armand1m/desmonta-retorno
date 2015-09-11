@@ -1,5 +1,5 @@
 # desmonta-retorno
-Programa CLI em cima de NodeJS que desmonta arquivos de remessa/retorno no modelo CNAB240 do Banco do Brasil.
+Programa CLI em nodejs que desmonta arquivos de remessa/retorno no modelo CNAB240 da FEBRABAN
 
 ### Usabilidade
 Clone o repositorio:
